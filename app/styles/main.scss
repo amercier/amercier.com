@@ -75,3 +75,68 @@ h1, h2, h3, h4, h5, h6 {
   font-family: Roboto;
   font-weight: 300;
 }
+
+
+.cv {
+
+  $cvDurationWidth: 100px;
+  $cvSecondaryColor: #999;
+
+  h3 {
+    font-size: 1.8 * $font-size-base;
+    font-weight: 100;
+    margin: 1.4em 0;
+    border-bottom: 1px solid;
+    padding-bottom: 0.1em;
+    color: $btn-primary-bg;
+  }
+
+  h4 {
+    font-weight: 300;
+    margin: 1.4em 0;
+    color: $btn-success-bg;
+  }
+
+  .cv-item {
+    position: relative;
+    padding-left: $cvDurationWidth;
+    margin: 1.4em 0;
+
+    .duration {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: $cvDurationWidth;
+      margin-right: 1em;
+      font-weight: 300;
+    }
+
+    .title-primary {
+      font-weight: bold;
+    }
+
+    .title-secondary {
+      color: $cvSecondaryColor;
+    }
+
+    .technologies {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.85 * $font-size-base;
+      margin: 0.3em 0;
+
+      li {
+        display: inline;
+
+        &:after {
+          content: ', ';
+        }
+
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+  }
+
+}
