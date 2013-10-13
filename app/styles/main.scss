@@ -10,6 +10,8 @@ $jumbotron-bg: "none";
 /* Put your CSS here */
 html, body {
   margin: 20px;
+  font-family: Roboto;
+  font-weight: 400;
 }
 
 body {
@@ -23,7 +25,7 @@ body {
   max-width: 700px;
 }
 .container-narrow > hr {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
 .header {
@@ -50,4 +52,26 @@ body {
       padding-right: ($jumbotron-padding-v * 2);
     }
   }
+
+  font-family: inherit;
+  font-weight: inherit;
+  font-weight: 200;
+
+  h1 {
+    font-family: inherit;
+    font-weight: 300;
+    font-size: 70px;
+  }
+
+  text-align: center;
+
+  .jumbotron-actions {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Roboto;
+  font-weight: 300;
 }
