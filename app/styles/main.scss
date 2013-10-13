@@ -1,6 +1,10 @@
 $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
+$jumbotron-padding-h: 0;
+$jumbotron-padding-v: 20px;
+$jumbotron-bg: "none";
+
 @import "bootstrap-sass/lib/bootstrap";
 
 /* Put your CSS here */
@@ -19,9 +23,31 @@ body {
   max-width: 700px;
 }
 .container-narrow > hr {
-  margin: 30px 0;
+  margin: 10px 0;
+}
+
+.header {
+  @include clearfix();
+}
+
+.header .nav {
+  margin: 10px 0;
 }
 
 .jumbotron {
-  background-color: none;
+  padding-top: $jumbotron-padding-v;
+  padding-bottom: $jumbotron-padding-v;
+  padding-left: $jumbotron-padding-h;
+  padding-right: $jumbotron-padding-h;
+  margin-bottom: $jumbotron-padding-v;
+
+  @media screen and (min-width: $screen-tablet) {
+    padding-top:    ($jumbotron-padding-v * 1.6);
+    padding-bottom: ($jumbotron-padding-v * 1.6);
+
+    .container & {
+      padding-left:  ($jumbotron-padding-v * 2);
+      padding-right: ($jumbotron-padding-v * 2);
+    }
+  }
 }
