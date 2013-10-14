@@ -73,14 +73,28 @@ angular.module('amercierApp')
             title: 'Internships'
           },
           {
-            title: 'Educational projects'
+            title: 'Educational projects',
+            items: [
+              {
+                title: 'Editema - Word processor for disabled persons',
+                sideNote: 'Master 2',
+                startTime: 2007,
+                duration: '6 months'
+              },
+              {
+                title: 'Geronimo - Sotware to play the board game Go',
+                sideNote: 'Master 1',
+                startTime: 2006,
+                duration: '6 months'
+              }
+            ]
           },
           {
             title: 'Diplomas',
             items: [
               {
                 title: 'Master 2 in User Experience Design',
-                location: 'ENAC (Toulouse, France)',
+                sideNote: 'ENAC (Toulouse, France)',
                 startTime: 2006,
                 endTime: 2007,
                 technologies: [
@@ -94,7 +108,7 @@ angular.module('amercierApp')
               },
               {
                 title: 'Master 1 in Computer Science',
-                location: 'University Paul Sabatier (Toulouse, France)',
+                sideNote: 'University Paul Sabatier (Toulouse, France)',
                 startTime: 2005,
                 endTime: 2006,
                 technologies: [
@@ -106,7 +120,7 @@ angular.module('amercierApp')
               },
               {
                 title: 'Licence in Computer Science',
-                location: 'University Paul Sabatier (Toulouse, France)',
+                sideNote: 'University Paul Sabatier (Toulouse, France)',
                 startTime: 2004,
                 endTime: 2005,
                 technologies: [
@@ -117,7 +131,7 @@ angular.module('amercierApp')
               },
               {
                 title: 'DUT in Computer Science',
-                location: 'University Institute of Technology (Rodez, France)',
+                sideNote: 'University Institute of Technology (Rodez, France)',
                 startTime: 2002,
                 endTime: 2004,
                 technologies: [
@@ -145,11 +159,40 @@ angular.module('amercierApp')
               {
                 title: 'English',
                 features: ['fluent'],
-                sideNote: '1 year in Australia, 2 months in New-Zealand, 2 years in Ireland'
+                sideNote: '1 year in Australia, 2 years in Ireland'
               },
               {
                 title: 'Spanish',
-                features: ['']
+                features: ['Spoken']
+              }
+            ]
+          },
+          {
+            title: 'Activitites',
+            type: 'compact',
+            items: [
+              {
+                title: 'Sports',
+                features: [
+                  'Football (13 years in a local club)',
+                  'Hiking and mountaineering',
+                  'Skiing',
+                  'Sydiving'
+                ]
+              },
+              {
+                title: 'Associations',
+                features: [
+                  'Treasurer in a local computer club',
+                  'Participation in an association for social reinsertion'
+                ]
+              },
+              {
+                title: 'Culture',
+                features: [
+                  'Travelling',
+                  'Music'
+                ]
               }
             ]
           }

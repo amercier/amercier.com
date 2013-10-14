@@ -6,10 +6,10 @@
       <div ng-repeat="item in category.items" class="cv-item">
         <div class="title">
           <span class="title-primary">{{item.title}}</span>
-          <span class="title-secondary">- {{item.location}}</span>
+          <span class="title-secondary">- {{item.sideNote}}</span>
         </div>
         <div class="duration">
-          <div class="duration-primary">{{item.startTime}}<span ng-if="item.endTime">-{{item.endTime}}</span></div>
+          <div class="duration-primary">{{item.startTime}}<span ng-show="item.endTime">-{{item.endTime}}</span></div>
           <div class="duration-secondary" ng-if="item.duration">{{item.duration}}</div>
         </div>
         <ul class="technologies">
