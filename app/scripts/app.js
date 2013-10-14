@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('amercierApp', [])
+angular.module('amercierApp', ['ngRoute'])
   .directive('activeLink', ['$location', function(location) {
     return {
       restrict: 'A',

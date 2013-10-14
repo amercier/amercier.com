@@ -80,7 +80,7 @@ h1, h2, h3, h4, h5, h6 {
 .cv {
 
   $cvDurationWidth: 100px;
-  $cvSecondaryColor: #999;
+  $cvSecondaryColor: #aaa;
 
   h3 {
     font-size: 1.8 * $font-size-base;
@@ -113,6 +113,8 @@ h1, h2, h3, h4, h5, h6 {
 
     .duration-secondary {
       color: $cvSecondaryColor;
+      font-size: 0.85 * $font-size-base;
+      font-weight: 300;
     }
 
     .title-primary {
@@ -121,6 +123,16 @@ h1, h2, h3, h4, h5, h6 {
 
     .title-secondary {
       color: $cvSecondaryColor;
+    }
+
+    .note {
+      font-size: 0.85 * $font-size-base;
+      margin: 0.3em 0;
+
+      /*
+      ~ .technologies:before {
+        content: 'Technologies: ';
+      }*/
     }
 
     .technologies {
@@ -140,6 +152,16 @@ h1, h2, h3, h4, h5, h6 {
           content: none;
         }
       }
+    }
+
+    .source {
+      font-size: 0.85 * $font-size-base;
+      margin: 0.3em 0;
+    }
+
+    .demo {
+      font-size: 0.85 * $font-size-base;
+      margin: 0.3em 0;
     }
   }
 
