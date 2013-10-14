@@ -98,9 +98,20 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .cv-item {
-    position: relative;
-    padding-left: $cvDurationWidth;
-    margin: 1.4em 0;
+
+    &.cv-item-extended {
+      position: relative;
+      padding-left: $cvDurationWidth;
+      margin: 1.4em 0;
+    }
+
+    &.cv-item-compact {
+      padding-left: 20px;
+
+      li {
+        margin: 0.5em 0;
+      }
+    }
 
     .duration {
       position: absolute;
@@ -135,7 +146,8 @@ h1, h2, h3, h4, h5, h6 {
       }*/
     }
 
-    .technologies {
+    .technologies,
+    .features {
       list-style: none;
       padding-left: 0;
       font-size: 0.85 * $font-size-base;
@@ -154,11 +166,11 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
 
-    .source {
-      font-size: 0.85 * $font-size-base;
-      margin: 0.3em 0;
+    .features {
+      display: inline;
     }
 
+    .source,
     .demo {
       font-size: 0.85 * $font-size-base;
       margin: 0.3em 0;

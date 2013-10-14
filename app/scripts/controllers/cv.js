@@ -56,10 +56,12 @@ angular.module('amercierApp')
         title: 'Work experience',
         categories: [
           {
-            title: 'Jobs'
+            title: 'Jobs',
+            type: 'extended'
           },
           {
             title: 'Freelance projects',
+            type: 'extended',
             items: [
               {
                 title: 'Oeco Architectes',
@@ -76,6 +78,7 @@ angular.module('amercierApp')
                   'PHP',
                   'Composer',
                   'SQL (MySQL)',
+                  'Ant',
                   'Git',
                   'Google Analytics',
                   'Sublime Text'
@@ -87,7 +90,6 @@ angular.module('amercierApp')
                 title: 'APB France',
                 sideNote: 'Website',
                 startTime: 2008,
-                duration: '3 months',
                 note: 'Website for Auto-Pièce Burguière car part company (with another developer)',
                 technologies: [
                   'HTML',
@@ -107,6 +109,7 @@ angular.module('amercierApp')
           },
           {
             title: 'Personal projects',
+            type: 'extended',
             items: [
               {
                 title: 'amercier-mvn-repo',
@@ -123,7 +126,7 @@ angular.module('amercierApp')
                 startTime: 2012,
                 endTime: 2013,
                 note: 'A Maven plugin to use Selenese HTML test suites against a Selenium Grid 2',
-                technologies: ['Java', 'Maven', 'UML', 'Git', 'Eclipse'],
+                technologies: ['Java', 'Maven', 'Selenium', 'UML', 'Git', 'Eclipse'],
                 source: 'https://github.com/amercier/selenese-maven-plugin'
               },
               {
@@ -222,10 +225,12 @@ angular.module('amercierApp')
         title: 'Education',
         categories: [
           {
-            title: 'Internships'
+            title: 'Internships',
+            type: 'extended'
           },
           {
             title: 'Educational projects',
+            type: 'extended',
             items: [
               {
                 title: 'Editema - Word processor for disabled persons',
@@ -243,6 +248,7 @@ angular.module('amercierApp')
           },
           {
             title: 'Diplomas',
+            type: 'extended',
             items: [
               {
                 title: 'Master 2 in User Experience Design',
@@ -320,7 +326,7 @@ angular.module('amercierApp')
             ]
           },
           {
-            title: 'Activitites',
+            title: 'Activities',
             type: 'compact',
             items: [
               {

@@ -3,22 +3,37 @@
     <h3>{{section.title}}</h3>
     <div class="category" ng-repeat="category in section.categories">
       <h4>{{category.title}}</h4>
-      <div ng-repeat="item in category.items" class="cv-item">
-        <div class="title">
-          <span class="title-primary">{{item.title}}</span>
-          <span class="title-secondary">- {{item.sideNote}}</span>
+
+      <div ng-if="category.type === 'extended'">
+        <div ng-repeat="item in category.items" class="cv-item cv-item-extended">
+          <div class="title">
+            <span class="title-primary">{{item.title}}</span>
+            <span class="title-secondary" ng-if="item.sideNote">- {{item.sideNote}}</span>
+          </div>
+          <div class="duration">
+            <div class="duration-primary">{{item.startTime}}<span ng-show="item.endTime">-{{item.endTime}}</span></div>
+            <div class="duration-secondary" ng-if="item.duration">{{item.duration}}</div>
+          </div>
+          <p class="note" ng-if="item.note">{{item.note}}</p>
+          <ul class="technologies" ng-if="item.technologies">
+            <li ng-repeat="technology in item.technologies">{{technology}}</li>
+          </ul>
+          <p class="source" ng-if="item.source">Source code: <a href="{{item.source}}" target="_blank">{{item.source}}</a></p>
+          <p class="demo" ng-if="item.demo">Demo: <a href="{{item.demo}}" target="_blank">{{item.demo}}</a></p>
         </div>
-        <div class="duration">
-          <div class="duration-primary">{{item.startTime}}<span ng-show="item.endTime">-{{item.endTime}}</span></div>
-          <div class="duration-secondary" ng-if="item.duration">{{item.duration}}</div>
-        </div>
-        <p class="note" ng-if="item.note">{{item.note}}</p>
-        <ul class="technologies" ng-if="item.technologies">
-          <li ng-repeat="technology in item.technologies">{{technology}}</li>
-        </ul>
-        <p class="source" ng-if="item.source">Source code: <a href="{{item.source}}" target="_blank">{{item.source}}</a></p>
-        <p class="demo" ng-if="item.demo">Demo: <a href="{{item.demo}}" target="_blank">{{item.demo}}</a></p>
       </div>
+
+      <div ng-if="category.type === 'compact'">
+        <ul class="cv-item cv-item-compact">
+          <li ng-repeat="item in category.items">
+            <strong>{{item.title}}:</strong>
+            <ul class="features">
+              <li ng-repeat="feature in item.features">{{feature}}</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </div>
