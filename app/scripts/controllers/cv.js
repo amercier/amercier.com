@@ -59,10 +59,162 @@ angular.module('amercierApp')
             title: 'Jobs'
           },
           {
-            title: 'Personal projects'
+            title: 'Freelance projects',
+            items: [
+              {
+                title: 'Oeco Architectes',
+                sideNote: 'Website',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'Website for Oeco architecture company',
+                technologies: [
+                  'HTML',
+                  'CSS',
+                  'Javascript (jQuery)',
+                  'Twitter Bootstrap',
+                  'Zend Framework 2',
+                  'PHP',
+                  'Composer',
+                  'SQL (MySQL)',
+                  'Git',
+                  'Google Analytics',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/www.oeco-architectes.com',
+                demo: 'http://www.oeco-architectes.com/'
+              },
+              {
+                title: 'APB France',
+                sideNote: 'Website',
+                startTime: 2008,
+                duration: '3 months',
+                note: 'Website for Auto-Pièce Burguière car part company (with another developer)',
+                technologies: [
+                  'HTML',
+                  'CSS',
+                  'Javascript (Mootools)',
+                  'Zend Framework',
+                  'PHP',
+                  'SQL (MySQL)',
+                  'UML',
+                  'CVS',
+                  'Google Analytics',
+                  'Eclipse'
+                ],
+                demo: 'http://www.apbfrance.com/'
+              }
+            ]
           },
           {
-            title: 'Freelance projects'
+            title: 'Personal projects',
+            items: [
+              {
+                title: 'amercier-mvn-repo',
+                sideNote: 'Maven repository',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'A Maven repository for my plugins',
+                technologies: ['Java', 'Maven', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/amercier-mvn-repo'
+              },
+              {
+                title: 'selenese-maven-plugin',
+                sideNote: 'Maven plugin',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'A Maven plugin to use Selenese HTML test suites against a Selenium Grid 2',
+                technologies: ['Java', 'Maven', 'UML', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/selenese-maven-plugin'
+              },
+              {
+                title: 'proxy.amercier.com',
+                sideNote: 'Web Service',
+                startTime: 2013,
+                note: 'A generic PHP proxy to allow cross-site XHR requests from a given list of domains',
+                technologies: [
+                  'Zend Framework 2',
+                  'PHP',
+                  'Composer',
+                  'Web Services',
+                  'REST',
+                  'Json',
+                  'Markdown',
+                  'Git',
+                  'Eclipse'
+                ],
+                source: 'https://github.com/amercier/proxy.amercier.com'
+              },
+              {
+                title: 'Scripts',
+                sideNote: 'for Windows, Linux and applications',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'Helper scripts for: Linux (bash), Windows (batch), VMware vCloud Director, MacOS',
+                technologies: ['Batch', 'Bash', 'vCloud Director', 'Git', 'Sublime Text'],
+                source: 'https://github.com/amercier/scripts'
+              },
+              {
+                title: 'Bootstrap Theme Chooser',
+                sideNote: 'Web App',
+                startTime: 2012,
+                note: 'A tiny web app to preview themes for Twitter Bootstrap framework',
+                technologies: ['Less', 'Bootstrap', 'Javascript (jQuery)', 'Markdown', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/bootstrap-theme-chooser',
+                demo: 'http://amercier.github.io/bootstrap-theme-chooser/',
+              },
+              {
+                title: 'jquery-panel',
+                sideNote: 'jQuery plugin',
+                startTime: 2012,
+                note: 'A jQuery plugin to manage collapsable panels',
+                technologies: ['Javascript (jQuery)', 'Markdown', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/jquery-panel'
+              },
+              {
+                title: 'ip.js',
+                sideNote: 'Javascript library',
+                startTime: 2012,
+                note: 'A JavaScript library to manipulate IPv4 addresses and subnets',
+                technologies: ['Javascript', 'Markdown', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/ip.js'
+              },
+              {
+                title: 'string.metrics.js',
+                sideNote: 'Javascript library',
+                startTime: 2012,
+                note: 'A JavaScript library which provides various String metric functions: Levenshtein distance, etc.',
+                technologies: ['Javascript', 'Markdown', 'Git', 'Eclipse'],
+                source: 'https://github.com/amercier/string.metrics.js'
+              },
+              {
+                title: 'Weagle',
+                sideNote: 'PHP Framework on top of Zend Framework',
+                startTime: 2011,
+                note: 'Facilitate the development of REST web services with Zend Framework',
+                technologies: ['Zend Framework 1', 'PHP', 'AJAX', 'CVS', 'Eclipse']
+              },
+              {
+                title: 'Ring',
+                sideNote: 'CSS Framework inspired from BlueTrip CSS',
+                startTime: 2010,
+                endTime: 2011,
+                note: 'Cross-browser: IE7+, Firefox/Chrome/Safari/Opera',
+                technologies: ['CSS', 'CVS', 'Eclipse']
+              },
+              {
+                title: 'Mootools plugins',
+                sideNote: 'Plugins for the Javascript toolkit Mootools',
+                startTime: 2010,
+                endTime: 2011,
+                note: 'Various plugins: Slideshow, Form validation, ...',
+                technologies: [
+                  'Javascript (Mootools)',
+                  'xHTML',
+                  'CVS',
+                  'Eclipse'
+                ]
+              }
+            ]
           }
         ]
       },
