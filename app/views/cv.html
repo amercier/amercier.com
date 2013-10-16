@@ -1,11 +1,14 @@
 <div class="cv">
+
+  <input ng-model="filter" ng-change="updateFilters()" type="text" class="form-control" placeholder="Filter (Ex: Javascript)" />
+
   <div class="section" ng-repeat="section in sections">
     <h3>{{section.title}}</h3>
     <div class="category" ng-repeat="category in section.categories">
       <h4>{{category.title}}</h4>
 
       <div ng-if="category.type === 'extended'">
-        <div ng-repeat="item in category.items" class="cv-item cv-item-extended">
+        <div ng-repeat="item in category.items | filter:isItemVisible" class="cv-item cv-item-extended">
           <div class="title">
             <span class="title-primary">{{item.title}}</span>
             <span class="title-secondary" ng-if="item.sideNote">- {{item.sideNote}}</span>
@@ -19,11 +22,11 @@
           <p class="demo" ng-if="item.demo">Demo: <a href="{{item.demo}}" target="_blank">{{item.demo}}</a></p>
           <p class="website" ng-if="item.website">Web site: <a href="{{item.website}}" target="_blank">{{item.website}}</a></p>
           <ul class="technologies" ng-if="item.technologies">
-            <li ng-repeat="technology in item.technologies" class="label label-default">{{technology}}</li>
+            <li ng-repeat="technology in item.technologies" ng-class="isTagSelected(technology) ? 'label label-success' : 'label label-default'">{{technology}}</li>
           </ul>
 
           <ul class="subitems" ng-if="item.subItems">
-            <li ng-repeat="subItem in item.subItems" class="cv-item cv-item-subitem">
+            <li ng-repeat="subItem in item.subItems | filter:isSubItemVisible" class="cv-item cv-item-subitem">
               <div class="title">
                 <span class="title-primary">{{subItem.title}}</span>
                 <span class="title-secondary" ng-if="subItem.sideNote">- {{subItem.sideNote}}</span>
@@ -37,7 +40,7 @@
               <p class="demo" ng-if="subItem.demo">Demo: <a href="{{subItem.demo}}" target="_blank">{{subItem.demo}}</a></p>
               <p class="website" ng-if="subItem.website">Web site: <a href="{{subItem.website}}" target="_blank">{{subItem.website}}</a></p>
               <ul class="technologies" ng-if="subItem.technologies">
-                <li ng-repeat="technology in subItem.technologies" class="label label-default">{{technology}}</li>
+                <li ng-repeat="technology in subItem.technologies" ng-class="isTagSelected(technology) ? 'label label-success' : 'label label-default'">{{technology}}</li>
               </ul>
             </li>
           </ul>

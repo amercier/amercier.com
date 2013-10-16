@@ -3,53 +3,53 @@
 angular.module('amercierApp')
   .controller('CvCtrl', function ($scope) {
 
-    $scope.languages = {
-      'php': {
-        tag: 'PHP',
-        name: 'PHP'
-      },
-      'html5': {
-        tag: 'HTML5',
-        name: 'HTML5'
-      },
-      'js': {
-        tag: 'Javascript',
-        name: 'Javascript'
+    $scope.filter = 'Grunt, Travis CI';
+
+    var filters = [];
+    $scope.updateFilters = function() {
+      filters = $scope.filter
+        .split(',')
+        .map(function(s) { return s.trim(); })
+        .filter(function(s) { return s.length > 0; });
+    };
+    $scope.updateFilters();
+
+    $scope.isItemVisible = function(item) {
+      if (!item.subItems) {
+        return $scope.isSubItemVisible(item);
       }
+      // else
+      for (var i = 0 ; i < item.subItems.length ; i++) {
+        if ($scope.isSubItemVisible(item.subItems[i])) {
+          return true;
+        }
+      }
+      return false;
     };
 
-    $scope.technologies = {
-      'zf2': {
-        tag: 'ZF2',
-        name: 'Zend Framework 2'
-      },
-      'bootstrap': {
-        tag: 'Bootstrap',
-        name: 'Twitter Bootstrap'
+    $scope.isSubItemVisible = function(subItem) {
+      if (!subItem.technologies) {
+        return true;
       }
+      for (var i = 0 ; i < subItem.technologies.length ; i++) {
+        if ($scope.isTagVisible(subItem.technologies[i])) {
+          return true;
+        }
+      }
+      return false;
     };
 
-    $scope.tools = {
-      git: {
-        tag: 'Git',
-        name: 'Git'
-      },
-      ant: {
-        tag: 'Ant',
-        name: 'Ant'
-      }
+    $scope.isTagVisible = function(tag) {
+      return filters.length === 0 || filters.indexOf(tag) !== -1;
     };
 
-    $scope.projects = [
-      {
-        name: 'oeco architectes website',
-        github: 'https://github.com/amercier/www.oeco-architectes.com',
-        demo: 'http://www.oeco-architectes.com',
-        languages: ['php', 'html', 'css', 'js', 'md', 'sql'],
-        technologies: ['css', 'zf2', 'bootstrap', 'mysql', 'apache2'],
-        tools: ['git', 'ant']
-      }
-    ];
+    $scope.isTagSelected = function(tag) {
+      return filters.length !== 0 && filters.indexOf(tag) !== -1;
+    };
+
+    $scope.tags = {
+
+    };
 
     $scope.sections = [
       {
@@ -102,13 +102,15 @@ angular.module('amercierApp')
                   },
                   {
                     title: 'ECOCenter Synoptics',
-                    technologies: []
+                    sideNote: 'Web Application',
+                    note: 'A tiny Web Application that allows generating diagrams to link installation documents with a comprehensive diagram',
+                    technologies: ['PlantUML', 'SVG', 'HTML5', 'CSS', 'Javascript']
                   },
                   {
                     title: 'ECV Web Tools',
                     sideNote: 'Web Application',
                     note: 'A tiny web application to merge other web tools into a single web application',
-                    technologies: ['HTML', 'Javascript (jQuery)', 'CSS']
+                    technologies: ['HTML', 'Javascript', 'jQuery', 'CSS']
                   }
                 ]
               },
@@ -126,7 +128,8 @@ angular.module('amercierApp')
                     note: 'Micro-SOC Box is a router installed on clients site that is monitored remotely at Micro-SOC.',
                     technologies: [
                       'Zend Framework',
-                      'Javascript (Mootools)',
+                      'Javascript',
+                      'Mootools',
                       'AJAX',
                       'CSS',
                       'xHTML',
@@ -139,12 +142,12 @@ angular.module('amercierApp')
                     title: 'Micro-SOC Monitor',
                     sideNote: 'Web Application',
                     note: 'A Web Application to monitor Micro-SOC Boxes activity',
-                    technologies: ['Zend Framework', 'PHP', 'Javascript (Mootools)', 'CSS', 'HTML5', 'Design Patterns']
+                    technologies: ['Zend Framework', 'PHP', 'Javascript', 'Mootools', 'CSS', 'HTML5', 'Design Patterns']
                   },
                   {
                     title: 'Developement of Micro-SOC Website',
                     sideNote: 'www.micro-soc.com',
-                    technologies: ['Zend Framework', 'PHP', 'Javascript (Mootools)', 'CSS', 'xHTML', 'Design Patterns']
+                    technologies: ['Zend Framework', 'PHP', 'Javascript', 'Mootools', 'CSS', 'xHTML', 'Design Patterns']
                   },
                   {
                     title: 'Maintenance of Jumper Website',
@@ -153,13 +156,13 @@ angular.module('amercierApp')
                   },
                   {
                     title: 'Automation of IT Security reports generation',
-                    technologies: ['Bash', 'PHP', 'Javascript (Mootools)', 'AJAX', 'CSS', 'xHTML']
+                    technologies: ['Bash', 'PHP', 'Javascript', 'Mootools', 'AJAX', 'CSS', 'xHTML']
                   },
                   {
                     title: 'Customisation of Request Tracker (ticket-tracking system)',
                     sideNote: 'for company specific needs',
                     note: 'Productivity gain for Micro-SOC operators: about +900%',
-                    technologies: ['Javascript (GreaseMonkey)', 'HTML5', 'AJAX', 'Zend Framework', 'PHP'],
+                    technologies: ['Javascript', 'GreaseMonkey', 'HTML5', 'AJAX', 'Zend Framework', 'PHP'],
                   },
                   {
                     title: 'SOC Operations (Security Operations Center)',
@@ -188,7 +191,8 @@ angular.module('amercierApp')
                 technologies: [
                   'HTML',
                   'CSS',
-                  'Javascript (jQuery)',
+                  'Javascript',
+                  'jQuery',
                   'Twitter Bootstrap',
                   'Zend Framework 2',
                   'PHP',
@@ -210,7 +214,8 @@ angular.module('amercierApp')
                 technologies: [
                   'HTML',
                   'CSS',
-                  'Javascript (Mootools)',
+                  'Javascript',
+                  'Mootools',
                   'Zend Framework',
                   'PHP',
                   'SQL (MySQL)',
@@ -224,9 +229,118 @@ angular.module('amercierApp')
             ]
           },
           {
-            title: 'Personal projects',
+            title: 'Open Source projects',
             type: 'extended',
             items: [
+              {
+                title: 'vCloud Patched PHP SDK',
+                sideNote: 'PHP Library',
+                startTime: 2013,
+                note: 'Patched version of the official VMware vCloud PHP SDK',
+                technologies: [
+                  'PHP',
+                  'Composer',
+                  'Make',
+                  'Markdown',
+                  'Git',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/vmware-vcloud-sdk-php-patched'
+              },
+              {
+                title: 'PHP Cli Helpers',
+                sideNote: 'PHP Library',
+                startTime: 2013,
+                note: 'Utility library for PHP Cli',
+                technologies: [
+                  'PHP',
+                  'Composer',
+                  'Unit Testing',
+                  'PHPUnit',
+                  'Travis CI',
+                  'Coveralls',
+                  'VersionEye',
+                  'Make',
+                  'Markdown',
+                  'Git',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/php-cli-helpers',
+                demo: 'http://amercier.github.io/php-cli-helpers/'
+              },
+              {
+                title: 'inheritance.js',
+                sideNote: 'Javascript Library',
+                startTime: 2013,
+                note: 'Prototypal inheritance utility library, pure-javascript, available as an AMD module',
+                technologies: [
+                  'Javascript',
+                  'AMD',
+                  'vCloud Director',
+                  'Grunt',
+                  'Bower',
+                  'Unit Testing',
+                  'QUnit',
+                  'Travis CI',
+                  'Make',
+                  'Markdown',
+                  'PlantUML',
+                  'Git',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/inheritance.js',
+                demo: 'http://amercier.github.io/inheritance.js/'
+              },
+              {
+                title: 'vcloud.js',
+                sideNote: 'Javascript Library',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'VMware vCloud API Javascript SDK',
+                technologies: [
+                  'Javascript',
+                  'vCloud Director',
+                  'Grunt',
+                  'Bower',
+                  'Unit Testing',
+                  'QUnit',
+                  'Travis CI',
+                  'Coveralls',
+                  'Make',
+                  'Markdown',
+                  'Git',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/vcloud.js',
+                demo: 'http://amercier.github.io/vcloud.js/'
+              },
+              {
+                title: 'Sandbox',
+                startTime: 2012,
+                endTime: 2013,
+                note: 'Experimentations & proof of concepts',
+                technologies: [
+                  'HTML5',
+                  'Bootstrap',
+                  'Javascript',
+                  'AMD',
+                  'AngularJS',
+                  'jQuery',
+                  'jQuery UI',
+                  'Polymer',
+                  'Promises',
+                  'Unit testing',
+                  'Karma',
+                  'QUnit',
+                  'PHP',
+                  'Zend Framework 2',
+                  'REST',
+                  'Git',
+                  'Sublime Text'
+                ],
+                source: 'https://github.com/amercier/sandbox',
+                demo: 'http://amercier.github.io/sandbox/'
+              },
               {
                 title: 'amercier-mvn-repo',
                 sideNote: 'Maven repository',
@@ -277,7 +391,7 @@ angular.module('amercierApp')
                 sideNote: 'Web Application',
                 startTime: 2012,
                 note: 'A tiny web app to preview themes for Twitter Bootstrap framework',
-                technologies: ['Less', 'Bootstrap', 'Javascript (jQuery)', 'Markdown', 'Git', 'Eclipse'],
+                technologies: ['Less', 'Bootstrap', 'Javascript', 'jQuery', 'Markdown', 'Git', 'Eclipse'],
                 source: 'https://github.com/amercier/bootstrap-theme-chooser',
                 demo: 'http://amercier.github.io/bootstrap-theme-chooser/',
               },
@@ -286,7 +400,7 @@ angular.module('amercierApp')
                 sideNote: 'jQuery plugin',
                 startTime: 2012,
                 note: 'A jQuery plugin to manage collapsable panels',
-                technologies: ['Javascript (jQuery)', 'Markdown', 'Git', 'Eclipse'],
+                technologies: ['Javascript', 'jQuery', 'Markdown', 'Git', 'Eclipse'],
                 source: 'https://github.com/amercier/jquery-panel'
               },
               {
@@ -326,7 +440,7 @@ angular.module('amercierApp')
                 startTime: 2010,
                 endTime: 2011,
                 note: 'Various plugins: Slideshow, Form validation, ...',
-                technologies: ['Javascript (Mootools)', 'xHTML', 'CVS', 'Eclipse']
+                technologies: ['Javascript', 'Mootools', 'xHTML', 'CVS', 'Eclipse']
               }
             ]
           }
@@ -354,8 +468,7 @@ angular.module('amercierApp')
                 note: 'An Intranet website to manage customers, employees tasks and calendar',
                 startTime: 2004,
                 duration: '10 weeks',
-                technologies: ['Javascript', 'HTML4', 'CSS', 'ASP', 'SQL (SQL server)', 'Microsoft IIS'],
-                website: 'http://www.topcased.org/'
+                technologies: ['Javascript', 'HTML4', 'CSS', 'ASP', 'SQL (SQL server)', 'Microsoft IIS']
               }
             ]
           },
