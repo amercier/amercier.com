@@ -210,12 +210,7 @@ angular.module('amercierApp')
                 startTime: 2010,
                 endTime: 2011,
                 note: 'Various plugins: Slideshow, Form validation, ...',
-                technologies: [
-                  'Javascript (Mootools)',
-                  'xHTML',
-                  'CVS',
-                  'Eclipse'
-                ]
+                technologies: ['Javascript (Mootools)', 'xHTML', 'CVS', 'Eclipse']
               }
             ]
           }
@@ -226,15 +221,36 @@ angular.module('amercierApp')
         categories: [
           {
             title: 'Internships',
-            type: 'extended'
+            type: 'extended',
+            items: [
+              {
+                title: 'Topcased - UX improvement',
+                sideNote: 'Anyware Technologies (Labège, France)',
+                note: 'A integrated system/software engineering toolkit. It is based on Eclipse Platform and available as an Eclipse plugin or RPC bundle',
+                startTime: 2007,
+                duration: '6 months',
+                technologies: ['Java', 'UML', 'ECore', 'Metamodeling', 'Eclipse Platform', 'CVS'],
+                website: 'http://www.topcased.org/'
+              },
+              {
+                title: 'Intranet Website - Complete rewrite',
+                sideNote: '3A Engineering (Rodez, France)',
+                note: 'An Intranet website to manage customers, employees tasks and calendar',
+                startTime: 2004,
+                duration: '10 weeks',
+                technologies: ['Javascript', 'HTML4', 'CSS', 'ASP', 'SQL (SQL server)', 'Microsoft IIS'],
+                website: 'http://www.topcased.org/'
+              }
+            ]
           },
           {
             title: 'Educational projects',
             type: 'extended',
             items: [
               {
-                title: 'Editema - Word processor for disabled persons',
+                title: 'Editema',
                 sideNote: 'Master 2',
+                note: 'Word processor for disabled persons',
                 startTime: 2007,
                 duration: '6 months',
                 technologies: [
@@ -247,8 +263,9 @@ angular.module('amercierApp')
                 ]
               },
               {
-                title: 'Geronimo - Sotware to play the board game Go',
+                title: 'Geronimo',
                 sideNote: 'Master 1',
+                note: 'Software to play Go (board Game)',
                 startTime: 2006,
                 duration: '6 months',
                 technologies: ['Java', 'SWT', 'UML', 'CVS']
@@ -275,7 +292,10 @@ angular.module('amercierApp')
                 technologies: [
                   'User-centric design',
                   'Ergonomy',
-                  'Web technologies (Javascript, Ajax, Flash/AS2/AS3, HTML)',
+                  'Javascript',
+                  'Ajax',
+                  'Flash',
+                  'xHTML',
                   'Java',
                   'Design Patterns',
                   'UML'
@@ -286,35 +306,21 @@ angular.module('amercierApp')
                 sideNote: 'University Paul Sabatier (Toulouse, France)',
                 startTime: 2005,
                 endTime: 2006,
-                technologies: [
-                  'Java',
-                  'UML',
-                  'OpenGL',
-                  'Metamodeling'
-                ]
+                technologies: ['Java', 'UML', 'OpenGL', 'Metamodeling']
               },
               {
                 title: 'Licence in Computer Science',
                 sideNote: 'University Paul Sabatier (Toulouse, France)',
                 startTime: 2004,
                 endTime: 2005,
-                technologies: [
-                  'Java',
-                  'UML',
-                  'SQL (MySQL)'
-                ]
+                technologies: ['Java', 'UML', 'SQL (MySQL)']
               },
               {
                 title: 'DUT in Computer Science',
                 sideNote: 'University Institute of Technology (Rodez, France)',
                 startTime: 2002,
                 endTime: 2004,
-                technologies: [
-                  'C++',
-                  'Java',
-                  'UML',
-                  'SQL (Oracle)'
-                ]
+                technologies: ['C++', 'Java', 'UML', 'SQL (Oracle)']
               }
             ]
           }
