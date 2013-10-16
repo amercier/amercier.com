@@ -31,12 +31,14 @@ angular.module('amercierApp')
       if (!subItem.technologies) {
         return true;
       }
-      for (var i = 0 ; i < subItem.technologies.length ; i++) {
-        if ($scope.isTagVisible(subItem.technologies[i])) {
-          return true;
+      // else
+
+      for (var i = 0 ; i < filters.length ; i++) {
+        if (subItem.technologies.indexOf(filters[i]) === -1) {
+          return false;
         }
       }
-      return false;
+      return true;
     };
 
     $scope.isTagVisible = function(tag) {
@@ -45,10 +47,6 @@ angular.module('amercierApp')
 
     $scope.isTagSelected = function(tag) {
       return filters.length !== 0 && filters.indexOf(tag) !== -1;
-    };
-
-    $scope.tags = {
-
     };
 
     $scope.sections = [
