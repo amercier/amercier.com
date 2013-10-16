@@ -236,13 +236,30 @@ angular.module('amercierApp')
                 title: 'Editema - Word processor for disabled persons',
                 sideNote: 'Master 2',
                 startTime: 2007,
-                duration: '6 months'
+                duration: '6 months',
+                technologies: [
+                  'User-centric design',
+                  'Ergonomy',
+                  'Java',
+                  'Flash',
+                  'UML',
+                  'CVS'
+                ]
               },
               {
                 title: 'Geronimo - Sotware to play the board game Go',
                 sideNote: 'Master 1',
                 startTime: 2006,
-                duration: '6 months'
+                duration: '6 months',
+                technologies: ['Java', 'SWT', 'UML', 'CVS']
+              },
+              {
+                title: 'C- Compiler',
+                sideNote: 'Master 1',
+                startTime: 2005,
+                duration: '1 month',
+                note: 'A program that compiles C- (a subset of C) into Java bytecode',
+                technologies: ['Yacc', 'Lex', 'C', 'Java', 'Bash']
               }
             ]
           },
