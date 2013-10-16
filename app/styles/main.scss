@@ -100,8 +100,6 @@ h1, h2, h3, h4, h5, h6 {
   .cv-item {
 
     &.cv-item-extended {
-      position: relative;
-      padding-left: $cvDurationWidth;
       margin: 2em 0;
     }
 
@@ -114,12 +112,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .duration {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: $cvDurationWidth;
-      margin-right: 1em;
       font-weight: 300;
+      margin: 1em 0;
     }
 
     .duration-secondary {
@@ -210,6 +204,27 @@ h1, h2, h3, h4, h5, h6 {
         .title-secondary {
           font-size: 0.85 * $font-size-base;
         }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+
+    .cv-item {
+
+      &.cv-item-extended {
+        position: relative;
+        padding-left: $cvDurationWidth;
+      }
+
+      .duration {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $cvDurationWidth;
+        margin-right: 1em;
+        margin-top: 0;
+        margin-bottom: 0;
       }
     }
   }
