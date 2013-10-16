@@ -14,7 +14,6 @@
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
         <!-- endbuild -->
-        <!-- <link rel="stylesheet" href="../bower_components/tagmanager/tagmanager.css"> -->
 
         <link href='http://fonts.googleapis.com/css?family=Roboto:100,300,400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 </head>
@@ -55,18 +54,19 @@
        ga('send', 'pageview');
     </script>
 
-    <!-- build:js scripts/plugins.js -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/typeahead.js/dist/typeahead.js"></script>
-    <script src="bower_components/tagmanager/tagmanager.js"></script>
-    <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/cv.js"></script>
-    <!-- endbuild -->
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/typeahead.js/dist/typeahead.js"></script>
+        <script src="bower_components/tagmanager/tagmanager.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/cv.js"></script>
+        <!-- endbuild -->
 </body>
 </html>
