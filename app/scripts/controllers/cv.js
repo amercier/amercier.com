@@ -422,7 +422,7 @@ angular.module('amercierApp')
                 sideNote: 'PHP Framework on top of Zend Framework',
                 startTime: 2011,
                 note: 'Facilitate the development of REST web services with Zend Framework',
-                technologies: ['Zend Framework 1', 'PHP', 'AJAX', 'CVS', 'Eclipse']
+                technologies: ['Zend Framework', 'PHP', 'AJAX', 'CVS', 'Eclipse']
               },
               {
                 title: 'Ring',
