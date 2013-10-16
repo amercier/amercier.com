@@ -21,6 +21,26 @@
           <ul class="technologies" ng-if="item.technologies">
             <li ng-repeat="technology in item.technologies" class="label label-default">{{technology}}</li>
           </ul>
+
+          <ul class="subitems" ng-if="item.subItems">
+            <li ng-repeat="subItem in item.subItems" class="cv-item cv-item-subitem">
+              <div class="title">
+                <span class="title-primary">{{subItem.title}}</span>
+                <span class="title-secondary" ng-if="subItem.sideNote">- {{subItem.sideNote}}</span>
+              </div>
+              <div class="duration">
+                <div class="duration-primary">{{subItem.startTime}}<span ng-show="subItem.endTime">-{{subItem.endTime}}</span></div>
+                <div class="duration-secondary" ng-if="subItem.duration">{{subItem.duration}}</div>
+              </div>
+              <p class="note" ng-if="subItem.note">{{subItem.note}}</p>
+              <p class="source" ng-if="subItem.source">Source code: <a href="{{subItem.source}}" target="_blank">{{subItem.source}}</a></p>
+              <p class="demo" ng-if="subItem.demo">Demo: <a href="{{subItem.demo}}" target="_blank">{{subItem.demo}}</a></p>
+              <p class="website" ng-if="subItem.website">Web site: <a href="{{subItem.website}}" target="_blank">{{subItem.website}}</a></p>
+              <ul class="technologies" ng-if="subItem.technologies">
+                <li ng-repeat="technology in subItem.technologies" class="label label-default">{{technology}}</li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
 
