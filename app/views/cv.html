@@ -1,6 +1,12 @@
 <div class="cv">
 
-  <input ng-model="filter" ng-change="updateFilters()" type="text" class="form-control" placeholder="Filter (Ex: Javascript)" />
+  <form class="form-inline" role="form">
+    <span class="filter-container form-group"></span>
+    <div class="form-group">
+      <input name="filter-hidden" ng-model="filter" ng-change="updateFilters()" type="hidden" />
+      <input name="filter-selector" type="text" class="form-control" placeholder="Filter (Ex: Javascript)" />
+    </div>
+  </form>
 
   <div class="section" ng-repeat="section in sections">
     <h3>{{section.title}}</h3>

@@ -3,7 +3,7 @@
 angular.module('amercierApp')
   .controller('CvCtrl', function ($scope) {
 
-    $scope.filter = 'Grunt, Travis CI';
+    $scope.filter = '';
 
     var filters = [];
     $scope.updateFilters = function() {
@@ -329,7 +329,7 @@ angular.module('amercierApp')
                   'jQuery UI',
                   'Polymer',
                   'Promises',
-                  'Unit testing',
+                  'Unit Testing',
                   'Karma',
                   'QUnit',
                   'PHP',
@@ -609,4 +609,48 @@ angular.module('amercierApp')
         ]
       }
     ];
+
+    var allFilters = [];
+    $scope.sections.forEach(function(section) {
+      section.categories.forEach(function(category) {
+        category.items.forEach(function(item) {
+          item.technologies && item.technologies.forEach(function(technology) {
+            if (allFilters.indexOf(technology) === -1) {
+              allFilters.push(technology);
+            }
+          });
+          item.subItems && item.subItems.forEach(function(subItem) {
+            subItem.technologies && subItem.technologies.forEach(function(technology) {
+              if (allFilters.indexOf(technology) === -1) {
+                allFilters.push(technology);
+              }
+            });
+          });
+        });
+      });
+    });
+
+    var tagApi = jQuery('[name=filter-selector]').tagsManager({
+      prefilled: [],
+      hiddenTagListName: 'filter-hidden',
+      onlyTagList: true,
+      tagClass: 'label label-primary',
+      tagsContainer: '.filter-container'
+    });
+
+    jQuery('[name=filter-selector]').typeahead({
+      name: 'filters',
+      local: allFilters,
+    }).on('typeahead:selected', function (e, d) {
+      tagApi.tagsManager('pushTag', d.value);
+
+    });
+
+    jQuery('[name=filter-hidden]').change(function(e) {
+      $scope.filter = e.target.value;
+      $scope.updateFilters();
+      $scope.$apply();
+    });
+
+
   });
