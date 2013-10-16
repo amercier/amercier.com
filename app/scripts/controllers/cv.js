@@ -634,7 +634,7 @@ angular.module('amercierApp')
       prefilled: [],
       hiddenTagListName: 'filter-hidden',
       onlyTagList: true,
-      tagClass: 'label label-primary',
+      tagClass: 'label label-success',
       tagsContainer: '.filter-container'
     });
 
