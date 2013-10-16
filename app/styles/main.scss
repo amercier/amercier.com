@@ -146,8 +146,35 @@ h1, h2, h3, h4, h5, h6 {
       }*/
     }
 
-    .technologies,
+    .technologies {
+      list-style: none;
+      line-height: 1.8;
+      padding-left: 0;
+      font-size: 0.85 * $font-size-base;
+      margin: 0.1em 0;
+
+      .label {
+        display: inline-block;
+        font-weight: 300;
+        margin-right: 0.5em;
+        padding-bottom: 0.4em;
+        padding-top: 0.3em;
+        &:last-child {
+          margin-right: none;
+        }
+      }
+
+      li {
+        display: inline;
+
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+
     .features {
+      display: inline;
       list-style: none;
       padding-left: 0;
       font-size: 0.85 * $font-size-base;
@@ -166,12 +193,9 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
 
-    .features {
-      display: inline;
-    }
-
     .source,
-    .demo {
+    .demo,
+    .website {
       font-size: 0.85 * $font-size-base;
       margin: 0.3em 0;
     }

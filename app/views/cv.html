@@ -15,11 +15,12 @@
             <div class="duration-secondary" ng-if="item.duration">{{item.duration}}</div>
           </div>
           <p class="note" ng-if="item.note">{{item.note}}</p>
-          <ul class="technologies" ng-if="item.technologies">
-            <li ng-repeat="technology in item.technologies">{{technology}}</li>
-          </ul>
           <p class="source" ng-if="item.source">Source code: <a href="{{item.source}}" target="_blank">{{item.source}}</a></p>
           <p class="demo" ng-if="item.demo">Demo: <a href="{{item.demo}}" target="_blank">{{item.demo}}</a></p>
+          <p class="website" ng-if="item.website">Web site: <a href="{{item.website}}" target="_blank">{{item.website}}</a></p>
+          <ul class="technologies" ng-if="item.technologies">
+            <li ng-repeat="technology in item.technologies" class="label label-default">{{technology}}</li>
+          </ul>
         </div>
       </div>
 
