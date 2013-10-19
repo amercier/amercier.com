@@ -342,6 +342,21 @@ module.exports = function (grunt) {
           ]
         }
       }
+    },
+    ftpush: {
+      build: {
+        auth: {
+          host: 'ftp.amercier.com',
+          port: 21,
+          authKey: 'amercier'
+        },
+        src: 'dist',
+        dest: '/www',
+        exclusions: [
+          'dist/**/.DS_Store',
+          'dist/**/Thumbs.db'
+        ]
+      }
     }
   });
 
@@ -381,6 +396,11 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin'
+  ]);
+
+  grunt.registerTask('deploy', [
+    'build',
+    'ftpush'
   ]);
 
   grunt.registerTask('default', [
