@@ -347,6 +347,15 @@ AddDefaultCharset utf-8
 #    Header set Strict-Transport-Security max-age=16070400;
 # </IfModule>
 
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Prevent SSL
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{HTTPS} =on
+    RewriteRule /?(.*) http://amercier.com/$1 [R=301,L]
+</IfModule>
+
 # ------------------------------------------------------------------------------
 # | Server software information                                                |
 # ------------------------------------------------------------------------------
