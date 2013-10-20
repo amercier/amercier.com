@@ -6,8 +6,7 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
       restrict: 'A',
       link: function(scope, element, attrs, controller) {
         var clazz = attrs.activeLink;
-        var path = element[0].firstChild.getAttribute('href');
-        path = path.substring(1); //hack because path does bot return including hashbang
+        var path = element[0].firstChild.getAttribute('ng-href').replace(/^#/, '');
         scope.location = $location;
         scope.$watch('location.path()', function(newPath) {
           if (path === newPath) {
@@ -32,4 +31,7 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .config(function ($locationProvider) {
+    $locationProvider.html5Mode(true);
   });
