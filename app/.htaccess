@@ -255,6 +255,17 @@ AddDefaultCharset utf-8
 #    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
+# ------------------------------------------------------------------------------
+# | Redirecting all URLs to index.html                                         |
+# ------------------------------------------------------------------------------
+
+# angularjs pushstate (history) support:
+# See http://www.josscrowcroft.com/2012/code/htaccess-for-html5-history-pushstate-url-routing/
+<IfModule mod_rewrite.c>
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule (.*) index.html [L]
+</IfModule>
+
 
 # ##############################################################################
 # # SECURITY                                                                   #
