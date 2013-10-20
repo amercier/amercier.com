@@ -58,10 +58,7 @@
           <li ng-repeat="item in category.items">
             <strong>{{item.title}}:</strong>
             <ul class="features">
-              <li ng-repeat="feature in item.features">
-                {{feature}}
-                <span class="title-secondary" ng-if="item.sideNote">{{item.sideNote}}</span>
-              </li>
+              <li ng-repeat="feature in item.features">{{feature}}<span class="title-secondary" ng-if="item.sideNote">{{item.sideNote}}</span></li>
             </ul>
           </li>
         </ul>

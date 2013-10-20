@@ -319,7 +319,7 @@ angular.module('amercierApp')
                 note: 'Experimentations & proof of concepts',
                 technologies: [
                   'HTML5',
-                  'Bootstrap',
+                  'Twitter Bootstrap',
                   'Javascript',
                   'AMD',
                   'AngularJS',
@@ -389,7 +389,7 @@ angular.module('amercierApp')
                 sideNote: 'Web Application',
                 startTime: 2012,
                 note: 'A tiny web app to preview themes for Twitter Bootstrap framework',
-                technologies: ['Less', 'Bootstrap', 'Javascript', 'jQuery', 'Markdown', 'Git', 'Eclipse'],
+                technologies: ['Less', 'Twitter Bootstrap', 'Javascript', 'jQuery', 'Markdown', 'Git', 'Eclipse'],
                 source: 'https://github.com/amercier/bootstrap-theme-chooser',
                 demo: 'http://amercier.github.io/bootstrap-theme-chooser/',
               },
@@ -585,7 +585,7 @@ angular.module('amercierApp')
                   'Football (13 years in a local club)',
                   'Hiking and mountaineering',
                   'Skiing',
-                  'Sydiving'
+                  'Skydiving'
                 ]
               },
               {
