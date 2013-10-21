@@ -239,7 +239,7 @@ AddDefaultCharset utf-8
 <IfModule mod_rewrite.c>
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+    RewriteRule ^$ http://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -252,18 +252,42 @@ AddDefaultCharset utf-8
 # <IfModule mod_rewrite.c>
 #    RewriteCond %{HTTPS} !=on
 #    RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
-#    RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#    RewriteRule ^$ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
 # ------------------------------------------------------------------------------
-# | Redirecting all URLs to index.html                                         |
+# | Allow /snapshots to pass through                                           |
+# | This prevents /snapshot/*.html being caught by other rules                 |
 # ------------------------------------------------------------------------------
 
-# angularjs pushstate (history) support:
-# See http://www.josscrowcroft.com/2012/code/htaccess-for-html5-history-pushstate-url-routing/
 <IfModule mod_rewrite.c>
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule (.*) index.html [L]
+  RewriteCond %{REQUEST_URI} ^/snapshots/
+  RewriteCond %{SCRIPT_FILENAME} -f
+  RewriteRule ^(.*)$ $1?_SNAPSHOT_ [NC,L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | Redirecting Search escaped fragments to /snapshots                         |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/$
+  RewriteRule ^(.*)$ snapshots/index.html?_FRAGMENT_INDEX_ [NC,L]
+
+  RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/cv$
+  RewriteRule ^(.*)$ snapshots/cv.html?_FRAGMENT_CV_ [NC,L]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | Redirecting bots to snapshots                                              |
+# ------------------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+  RewriteCond %{HTTP_USER_AGENT} (googlebot|InfoSeek|msnbot) [NC]
+  RewriteRule ^$ snapshots/index.html?_BOT_INDEX_ [NC,L]
+
+  RewriteCond %{HTTP_USER_AGENT} (googlebot|InfoSeek|msnbot) [NC]
+  RewriteRule ^(.*)$ snapshots/$1.html?_BOT_OTHER_ [NC,L]
 </IfModule>
 
 
@@ -331,6 +355,18 @@ AddDefaultCharset utf-8
 </FilesMatch>
 
 # ------------------------------------------------------------------------------
+# | Redirecting all URLs to index.html                                         |
+# ------------------------------------------------------------------------------
+
+# angularjs pushstate (history) support:
+# See http://www.josscrowcroft.com/2012/code/htaccess-for-html5-history-pushstate-url-routing/
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} !-f
+    RewriteRule "(.*)" index.html?_DEFAULTS_TO_INDEX_ [L]
+</IfModule>
+
+
+# ------------------------------------------------------------------------------
 # | Secure Sockets Layer (SSL)                                                 |
 # ------------------------------------------------------------------------------
 
@@ -340,7 +376,7 @@ AddDefaultCharset utf-8
 
 # <IfModule mod_rewrite.c>
 #    RewriteCond %{SERVER_PORT} !^443
-#    RewriteRule ^ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
+#    RewriteRule ^$ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
 # </IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

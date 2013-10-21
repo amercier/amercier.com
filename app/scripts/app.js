@@ -4,9 +4,9 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
   .directive('activeLink', function($location) {
     return {
       restrict: 'A',
-      link: function(scope, element, attrs, controller) {
+      link: function(scope, element, attrs) {
         var clazz = attrs.activeLink;
-        var path = element[0].firstChild.getAttribute('ng-href').replace(/^#/, '');
+        var path = element[0].firstChild.getAttribute('ng-href').replace(/^!?#/, '');
         scope.location = $location;
         scope.$watch('location.path()', function(newPath) {
           if (path === newPath) {
@@ -21,11 +21,11 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: '/views/main.html',
         controller: 'MainCtrl'
       })
       .when('/cv', {
-        templateUrl: 'views/cv.html',
+        templateUrl: '/views/cv.html',
         controller: 'CvCtrl'
       })
       .otherwise({
@@ -33,5 +33,5 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
       });
   })
   .config(function ($locationProvider) {
-    $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true).hashPrefix('!');
   });

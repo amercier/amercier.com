@@ -347,6 +347,36 @@ module.exports = function (grunt) {
         }
       }
     },
+    htmlSnapshot: {
+      all: {
+        options: {
+          snapshotPath: 'dist/snapshots/',
+          sitePath: 'http://localhost:9000/',
+          msWaitForPages: 1000,
+          removeScripts: true,
+          removeLinkTags: true,
+          replaceStrings:[
+          ],
+          bodyAttr: 'data-prerendered',
+          urls: [
+            '',
+            '#!/cv'
+          ],
+          cookies: [
+          ]
+        }
+      }
+    },
+    rename: {
+      snapshotIndex: {
+        src: 'dist/snapshots/snapshot_.html',
+        dest: 'dist/snapshots/index.html'
+      },
+      snapshotCv: {
+        src: 'dist/snapshots/snapshot____cv.html',
+        dest: 'dist/snapshots/cv.html'
+      }
+    },
     ftpush: {
       build: {
         auth: {
@@ -387,6 +417,13 @@ module.exports = function (grunt) {
     'karma'
   ]);
 
+  grunt.registerTask('snapshot', [
+    'connect:dist',
+    'htmlSnapshot',
+    'rename:snapshotIndex',
+    'rename:snapshotCv'
+  ]);
+
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
@@ -399,7 +436,8 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'rev',
-    'usemin'
+    'usemin',
+    'snapshot'
   ]);
 
   grunt.registerTask('deploy', [
