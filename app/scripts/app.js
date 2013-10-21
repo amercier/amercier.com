@@ -28,6 +28,10 @@ angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angularti
         templateUrl: '/views/cv.html',
         controller: 'CvCtrl'
       })
+      .when('/contact', {
+        templateUrl: '/views/contact.html',
+        controller: 'ContactCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
