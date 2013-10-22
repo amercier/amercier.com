@@ -7,6 +7,7 @@ $jumbotron-bg: "none";
 
 @import "bootstrap-sass/lib/bootstrap";
 @import "animate.scss";
+@import "../scripts/bootstrap-tagsinput/bootstrap-tagsinput.css";
 
 /* Put your CSS here */
 html, body {
@@ -296,4 +297,8 @@ form {
     display: inline-block;
     vertical-align: bottom;
   }
+}
+
+.bootstrap-tagsinput {
+  width: 100%;
 }

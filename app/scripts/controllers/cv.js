@@ -2,16 +2,20 @@
 
 angular.module('amercierApp').controller('CvCtrl', function ($scope) {
 
+  /*
   $scope.filter = '';
 
-  var filters = [];
+  var $scope.filters = [];
   $scope.updateFilters = function() {
-    filters = $scope.filter
+    $scope.filters = $scope.filter
       .split(',')
       .map(function(s) { return s.trim(); })
       .filter(function(s) { return s.length > 0; });
   };
   $scope.updateFilters();
+  */
+
+  $scope.filters = [];
 
   $scope.isItemVisible = function(item) {
     if (!item.subItems) {
@@ -32,8 +36,8 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     }
     // else
 
-    for (var i = 0 ; i < filters.length ; i++) {
-      if (subItem.technologies.indexOf(filters[i]) === -1) {
+    for (var i = 0 ; i < $scope.filters.length ; i++) {
+      if (subItem.technologies.indexOf($scope.filters[i]) === -1) {
         return false;
       }
     }
@@ -41,11 +45,11 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
   };
 
   $scope.isTagVisible = function(tag) {
-    return filters.length === 0 || filters.indexOf(tag) !== -1;
+    return $scope.filters.length === 0 || $scope.filters.indexOf(tag) !== -1;
   };
 
   $scope.isTagSelected = function(tag) {
-    return filters.length !== 0 && filters.indexOf(tag) !== -1;
+    return $scope.filters.length !== 0 && $scope.filters.indexOf(tag) !== -1;
   };
 
   $scope.sections = [
@@ -607,19 +611,19 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     }
   ];
 
-  var allFilters = [];
+  $scope.allFilters = [];
   $scope.sections.forEach(function(section) {
     section.categories.forEach(function(category) {
       category.items.forEach(function(item) {
         item.technologies && item.technologies.forEach(function(technology) {
-          if (allFilters.indexOf(technology) === -1) {
-            allFilters.push(technology);
+          if ($scope.allFilters.indexOf(technology) === -1) {
+            $scope.allFilters.push(technology);
           }
         });
         item.subItems && item.subItems.forEach(function(subItem) {
           subItem.technologies && subItem.technologies.forEach(function(technology) {
-            if (allFilters.indexOf(technology) === -1) {
-              allFilters.push(technology);
+            if ($scope.allFilters.indexOf(technology) === -1) {
+              $scope.allFilters.push(technology);
             }
           });
         });
@@ -627,12 +631,17 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     });
   });
 
+  $scope.getAllFilters = function() {
+    return $scope.allFilters;
+  }
+
+  /*
   var tagApi = jQuery('[name=filter-selector]').tagsManager({
-    prefilled: [],
-    hiddenTagListName: 'filter-hidden',
-    onlyTagList: true,
-    tagClass: 'label label-success',
-    tagsContainer: '.filter-container'
+    //prefilled: [],
+    //hiddenTagListName: 'filter-hidden',
+    onlyTagList: true//,
+    //tagClass: 'label label-success',
+    //tagsContainer: '.filter-container'
   });
 
   jQuery('[name=filter-selector]').typeahead({
@@ -640,7 +649,6 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     local: allFilters,
   }).on('typeahead:selected', function (e, d) {
     tagApi.tagsManager('pushTag', d.value);
-
   });
 
   jQuery('[name=filter-hidden]').change(function(e) {
@@ -648,5 +656,6 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     $scope.updateFilters();
     $scope.$apply();
   });
+  */
 
 });

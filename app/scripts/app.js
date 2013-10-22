@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angulartics.google.analytics'])
+angular.module('amercierApp', ['ngRoute', 'ngAnimate', 'angulartics', 'angulartics.google.analytics', 'bootstrap-tagsinput'])
   .directive('activeLink', function($location) {
     return {
       restrict: 'A',
