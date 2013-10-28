@@ -6,8 +6,8 @@ $jumbotron-padding-v: 20px;
 $jumbotron-bg: "none";
 
 @import "bootstrap-sass/lib/bootstrap";
+@import "bootstrap-tagsinput.scss";
 @import "animate.scss";
-@import "../scripts/bootstrap-tagsinput/bootstrap-tagsinput.css";
 
 /* Put your CSS here */
 html, body {
@@ -24,7 +24,7 @@ body {
 
 .container-narrow {
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
 }
 .container-narrow > hr {
   margin: 20px 0;
@@ -85,31 +85,32 @@ h1, h2, h3, h4, h5, h6 {
   $cvSecondaryColor: #aaa;
 
   h3 {
-    font-size: 1.8 * $font-size-base;
+    font-size: 2.5 * $font-size-base;
     font-weight: 300;
-    margin: 1.4em 0;
-    border-bottom: 1px solid;
+    margin: 1.5em 0;
+    border-bottom: 2px solid;
     padding-bottom: 0.1em;
     color: $btn-primary-bg;
   }
 
   h4 {
+    font-size: 2 * $font-size-base;
     font-weight: 300;
-    margin: 1.4em 0;
+    margin: 1.5em 0;
     color: $btn-success-bg;
   }
 
   .cv-item {
 
     &.cv-item-extended {
-      margin: 2em 0;
+      margin: 3em 0;
     }
 
     &.cv-item-compact {
       padding-left: 20px;
 
       li {
-        margin: 0.5em 0;
+        margin: 1em 0;
       }
     }
 
@@ -150,7 +151,7 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 92%;
         font-weight: 300;
         margin-right: 0.4em;
-        padding-bottom: 0.35em;
+        padding-bottom: 0.3em;
         padding-top: 0.2em;
         &:last-child {
           margin-right: none;
@@ -158,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
       }
 
       .label-default {
-        background-color: #aaa;
+        background-color: #bbb;
       }
 
       li {
@@ -201,7 +202,7 @@ h1, h2, h3, h4, h5, h6 {
       padding-left: 20px;
 
       .cv-item {
-        margin: 1em 0;
+        margin: 2em 0;
 
         .title-primary,
         .title-secondary {
@@ -278,27 +279,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 form {
-  .tm-tag {
-
-  }
-
-  .tm-tag-remove {
-    color: white;
-    margin-left: 0;
-    padding: 5px;
-  }
-
   .label {
     font-size: 92%;
     font-weight: 300;
-    padding-top: 10px;
-    padding-bottom: 11px;
-    margin-right: 5px;
-    display: inline-block;
-    vertical-align: bottom;
   }
-}
 
-.bootstrap-tagsinput {
-  width: 100%;
+  .form-control {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
 }

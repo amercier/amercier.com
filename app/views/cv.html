@@ -1,14 +1,10 @@
 <div class="cv">
 
-  <form class="form-inline" role="form">
-    <bootstrap-tagsinput
-      ng-model="filters"
-      typeahead-source="getAllFilters"
-      tagclass="label label-success"
-      itemvalue="value"
-      itemtext="text"
-      confirmKeys="[9,13,44]">
-    </bootstrap-tagsinput>
+  <form role="form">
+    <div class="form-group">
+      <label for="filters">Filter by skill (start typing...)</label>
+      <input name="filters" type="text" class="form-control" />
+    </div>
   </form>
 
   <div class="section" ng-repeat="section in sections">

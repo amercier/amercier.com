@@ -2,10 +2,9 @@
 
 angular.module('amercierApp').controller('CvCtrl', function ($scope) {
 
-  /*
   $scope.filter = '';
 
-  var $scope.filters = [];
+  $scope.filters = [];
   $scope.updateFilters = function() {
     $scope.filters = $scope.filter
       .split(',')
@@ -13,9 +12,6 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
       .filter(function(s) { return s.length > 0; });
   };
   $scope.updateFilters();
-  */
-
-  $scope.filters = [];
 
   $scope.isItemVisible = function(item) {
     if (!item.subItems) {
@@ -631,31 +627,33 @@ angular.module('amercierApp').controller('CvCtrl', function ($scope) {
     });
   });
 
-  $scope.getAllFilters = function() {
-    return $scope.allFilters;
-  }
-
-  /*
-  var tagApi = jQuery('[name=filter-selector]').tagsManager({
-    //prefilled: [],
-    //hiddenTagListName: 'filter-hidden',
-    onlyTagList: true//,
-    //tagClass: 'label label-success',
-    //tagsContainer: '.filter-container'
+  var filtersInput = jQuery('[name=filters]');
+  filtersInput.tagsinput({
+    tagClass: function(item) {
+      return 'label label-success';
+    },
+    confirmKeys: [9,13,44],
+    freeInput: false
   });
 
-  jQuery('[name=filter-selector]').typeahead({
-    name: 'filters',
-    local: allFilters,
-  }).on('typeahead:selected', function (e, d) {
-    tagApi.tagsManager('pushTag', d.value);
-  });
+  filtersInput.tagsinput('input').parent()
+    .addClass('form-control')
 
-  jQuery('[name=filter-hidden]').change(function(e) {
-    $scope.filter = e.target.value;
+  filtersInput.tagsinput('input')
+    .typeahead({
+      local: $scope.allFilters
+    }).bind('typeahead:selected', jQuery.proxy(function (obj, datum) {
+      this.tagsinput('add', datum.value);
+      this.tagsinput('input').typeahead('setQuery', '');
+    }, filtersInput));
+
+  function onTagsChange() {
+    $scope.filter = filtersInput.val();
     $scope.updateFilters();
     $scope.$apply();
-  });
-  */
+  }
+
+  filtersInput.bind('itemAdded', onTagsChange);
+  filtersInput.bind('itemRemoved', onTagsChange);
 
 });
