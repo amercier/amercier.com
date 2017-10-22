@@ -237,7 +237,7 @@ AddDefaultCharset utf-8
 # Option 1: rewrite www.example.com → example.com
 
 <IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} !=on
+#    RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^$ http://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
@@ -374,10 +374,11 @@ AddDefaultCharset utf-8
 # prevent `https://www.example.com` when your certificate only allows
 # `https://secure.example.com`.
 
-# <IfModule mod_rewrite.c>
-#    RewriteCond %{SERVER_PORT} !^443
-#    RewriteRule ^$ https://example-domain-please-change-me.com%{REQUEST_URI} [R=301,L]
-# </IfModule>
+<IfModule mod_rewrite.c>
+   RewriteCond %{SERVER_PORT} !^443 [OR]
+   RewriteCond %{HTTPS} !=on
+   RewriteRule ^$ https://amercier.com%{REQUEST_URI} [R=301,L]
+</IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -390,18 +391,18 @@ AddDefaultCharset utf-8
 # server via HTTPS, regardless of what the users type in the address bar.
 # http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
 
-# <IfModule mod_headers.c>
-#    Header set Strict-Transport-Security max-age=16070400;
-# </IfModule>
+<IfModule mod_headers.c>
+   Header set Strict-Transport-Security max-age=16070400;
+</IfModule>
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 # Prevent SSL
 
-<IfModule mod_rewrite.c>
-    RewriteCond %{HTTPS} =on
-    RewriteRule /?(.*) http://amercier.com/$1 [R=301,L]
-</IfModule>
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTPS} =on
+#     RewriteRule /?(.*) http://amercier.com/$1 [R=301,L]
+# </IfModule>
 
 # ------------------------------------------------------------------------------
 # | Server software information                                                |
