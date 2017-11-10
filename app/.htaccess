@@ -318,6 +318,46 @@ AddDefaultCharset utf-8
 #    </FilesMatch>
 # </IfModule>
 
+
+# ------------------------------------------------------------------------------
+# | Secure Sockets Layer (SSL)                                                 |
+# ------------------------------------------------------------------------------
+
+# Rewrite secure requests properly to prevent SSL certificate warnings, e.g.:
+# prevent `https://www.example.com` when your certificate only allows
+# `https://secure.example.com`.
+
+<IfModule mod_rewrite.c>
+   RewriteCond %{SERVER_PORT} !^443 [OR]
+   RewriteCond %{HTTPS} !=on
+   RewriteRule ^$ https://amercier.com%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Force client-side SSL redirection.
+
+# If a user types "example.com" in his browser, the above rule will redirect him
+# to the secure version of the site. That still leaves a window of opportunity
+# (the initial HTTP connection) for an attacker to downgrade or redirect the
+# request. The following header ensures that browser will ONLY connect to your
+# server via HTTPS, regardless of what the users type in the address bar.
+# http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
+
+<IfModule mod_headers.c>
+   Header set Strict-Transport-Security max-age=16070400;
+</IfModule>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Prevent SSL
+
+# <IfModule mod_rewrite.c>
+#     RewriteCond %{HTTPS} =on
+#     RewriteRule /?(.*) http://amercier.com/$1 [R=301,L]
+# </IfModule>
+
+
 # ------------------------------------------------------------------------------
 # | File access                                                                |
 # ------------------------------------------------------------------------------
@@ -365,44 +405,6 @@ AddDefaultCharset utf-8
     RewriteRule "(.*)" index.html?_DEFAULTS_TO_INDEX_ [L]
 </IfModule>
 
-
-# ------------------------------------------------------------------------------
-# | Secure Sockets Layer (SSL)                                                 |
-# ------------------------------------------------------------------------------
-
-# Rewrite secure requests properly to prevent SSL certificate warnings, e.g.:
-# prevent `https://www.example.com` when your certificate only allows
-# `https://secure.example.com`.
-
-<IfModule mod_rewrite.c>
-   RewriteCond %{SERVER_PORT} !^443 [OR]
-   RewriteCond %{HTTPS} !=on
-   RewriteRule ^$ https://amercier.com%{REQUEST_URI} [R=301,L]
-</IfModule>
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Force client-side SSL redirection.
-
-# If a user types "example.com" in his browser, the above rule will redirect him
-# to the secure version of the site. That still leaves a window of opportunity
-# (the initial HTTP connection) for an attacker to downgrade or redirect the
-# request. The following header ensures that browser will ONLY connect to your
-# server via HTTPS, regardless of what the users type in the address bar.
-# http://www.html5rocks.com/en/tutorials/security/transport-layer-security/
-
-<IfModule mod_headers.c>
-   Header set Strict-Transport-Security max-age=16070400;
-</IfModule>
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Prevent SSL
-
-# <IfModule mod_rewrite.c>
-#     RewriteCond %{HTTPS} =on
-#     RewriteRule /?(.*) http://amercier.com/$1 [R=301,L]
-# </IfModule>
 
 # ------------------------------------------------------------------------------
 # | Server software information                                                |
