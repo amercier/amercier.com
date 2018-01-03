@@ -1,7 +1,9 @@
 language: node_js
-node_js:
-  - '0.8'
-  - '0.10'
+node_js: 4
+addons:
+  chrome: stable
+before_install:
+  - npm install -g npm@5
 before_script:
-  - 'npm install -g bower grunt-cli'
-  - 'bower install'
+  - gem install compass
+  - ./node_modules/.bin/bower install

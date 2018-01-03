@@ -11,11 +11,19 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'app/bower_components/jquery/jquery.js',
       'app/bower_components/angular/angular.js',
+      'app/bower_components/angular-animate/angular-animate.js',
+      'app/bower_components/angular-route/angular-route.js',
+      'app/bower_components/angulartics/src/angulartics.js',
+      'app/bower_components/angulartics/src/angulartics-ga.js',
+      'app/bower_components/typeahead.js/dist/typeahead.js',
+      'app/scripts/bootstrap-tagsinput/bootstrap-tagsinput.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/scripts/*.js',
-      'app/scripts/**/*.js',
-      'test/mock/**/*.js',
+      'app/scripts/app.js',
+      'app/scripts/controllers/main.js',
+      'app/scripts/controllers/cv.js',
+      'app/scripts/controllers/contact.js',
       'test/spec/**/*.js'
     ],
 
@@ -42,7 +50,7 @@ module.exports = function(config) {
     // - Safari (only Mac)
     // - PhantomJS
     // - IE (only Windows)
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS', 'ChromeHeadless', 'FirefoxHeadless'],
 
 
     // Continuous Integration mode
