@@ -597,21 +597,6 @@ module.exports = function (grunt) {
         src: 'dist/snapshots/snapshot____contact.html',
         dest: 'dist/snapshots/contact.html'
       }
-    },
-    ftpush: {
-      build: {
-        auth: {
-          host: 'ftp.amercier.com',
-          port: 21,
-          authKey: 'amercier'
-        },
-        src: 'dist',
-        dest: '/www',
-        exclusions: [
-          'dist/**/.DS_Store',
-          'dist/**/Thumbs.db'
-        ]
-      }
     }
   });
 
@@ -660,11 +645,6 @@ module.exports = function (grunt) {
     'rev',
     'usemin',
     'snapshot'
-  ]);
-
-  grunt.registerTask('deploy', [
-    'build',
-    'ftpush'
   ]);
 
   grunt.registerTask('default', [
